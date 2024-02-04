@@ -1,0 +1,27 @@
+.post-body {
+  margin: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.post-heading {
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  border-radius: 6px;
+  background-color: #0f2061;
+}
+
+.post-title {
+  font-size: 1em;
+}
+
+.post-details {
+  font-size: 0.5em;
+}
+
+.post-content {
+  font-size: 0.7em;
+  padding: 10px 0px 10px 10px;
+}
+
+/*# sourceMappingURL=post.css.map */
