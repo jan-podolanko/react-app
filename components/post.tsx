@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import './post.scss'
+import Link from 'next/link';
 
 export default function Post({id, title, author, content, email, date}: 
     {
@@ -9,24 +11,19 @@ export default function Post({id, title, author, content, email, date}:
         email: String,
         date: Date
     }) {
+    const [showMore, setShowMore] = useState(false);
+    function handleClick() {
+        setShowMore(!showMore);
+      }
     function ShowContent() {
-        let show = false;
         if(content.length > 30){
-            if(show){
-                return (
-                    <>
-{/*                     <button onClick={()=> show = !show}>click me!</button>
- */}                    <div className="post-content"> { content } </div>
-                    </>
-                )
-            } else {
-                return (
-                    <>
-{/*                     <button onClick={()=> show = !show}>click me!</button>
- */}                    <div className="post-content"> { content.substring(0, 27) + "..."} </div>
-                    </>
-                )
-            }
+            return (
+                <>
+                <div className="clickable" onClick={handleClick}>
+                 { showMore ? <div className="post-content"> { content } </div> : <div className="post-content"> { content.substring(0,29) + '...' } </div> } 
+                 </div>
+                </>
+            )
         } else {
             return <div className="post-content"> { content } </div>
         }
@@ -34,9 +31,11 @@ export default function Post({id, title, author, content, email, date}:
     return (
         <div className="post-body">
             <div className="post-heading">
-                <div className="post-title">
+                <Link href={`/${id}`}>
+                    <div className="post-title">
                     { title }
-                </div>
+                    </div>
+                </Link>
                 <div className="post-details">
                     Posted { date.toString() } by { author ? author : "an unknown author"}
                 </div>

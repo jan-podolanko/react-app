@@ -6,6 +6,7 @@
   margin: 10px;
   border: 2px solid white;
   border-radius: 10px;
+  font-weight: 600;
 }
 
 .post-heading {
@@ -16,15 +17,15 @@
 }
 
 .post-title {
-  font-size: 1em;
+  font-size: 3em;
 }
 
 .post-details {
-  font-size: 0.5em;
+  font-size: 1em;
 }
 
 .post-content {
-  font-size: 0.7em;
+  font-size: 1.5em;
   padding: 10px 0px 10px 10px;
 }
 

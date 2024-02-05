@@ -6,6 +6,7 @@ import { db } from '@/firebase/firebase'
 import Post from '@/components/post'
 import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import Link from 'next/link'
 
 
 export default function Home() {
@@ -35,25 +36,21 @@ export default function Home() {
   useEffect(() => {
     getPosts();
   }, []);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <main className={styles.main}>
       <div>
-        All Posts
+        Posts
       </div>
       <div className={styles.grid}>
       {data.map((post: any, index: any) => (
-          <h1 key={index}><Post 
+        <div key={index}><Post
           id={post.id}
           title={post.title}
           author={post.author}
           content={post.content}
           email={post.email}
-          date={post.date}
-          /></h1>
+          date={post.date} /></div>
         ))}
       </div>
     </main>
