@@ -4,11 +4,8 @@ import { useEffect, useState } from 'react';
 import './post.scss'
 import { db } from '@/firebase/firebase';
 import { getDoc, doc, collection, getDocs, where, query } from 'firebase/firestore';
-import { Inter } from 'next/font/google'
 import '../globals.css'
 import Comment from '@/components/comment';
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Page({params: {id}}: {params: {id: string}}) {
     const [data, setData] = useState({});

@@ -11,9 +11,12 @@ import Link from 'next/link'
 
 export default function Home() {
   const [data, setData] = useState([]);
-  let posts: any = []
+  const [sortState, setSortState] = useState("dateDesc");
+  const [searchState, setSearchState] = useState("");
+  let posts: any = [];
   const getPosts = async () => {
     let docs = await getDocs(collection(db, "posts"));
+    posts = [];
     docs.forEach((doc) => {
       posts.push({
         id: doc.id,
@@ -29,10 +32,14 @@ export default function Home() {
         homeView: true,
       });
     });
-      /* posts.sort(sortByDateDesc); */
       setData(posts)
-      console.log(posts[0].id)
     };
+    const sortMethods = {
+      dateDesc: { method: (a: {date: number}, b: {date: number}) => {return (b.date - a.date)}},
+      dateAsc: { method: (a: { date: number }, b: { date: number }) => { return (a.date - b.date) }},
+      alphaDesc: {method: (a: { title: any }, b: { title: any }) => b.title.toLowerCase().localeCompare(a.title.toLowerCase())},
+      alphaAsc: {method: (a: { title: any }, b: { title: any }) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())}
+    }
   useEffect(() => {
     getPosts();
   }, []);
@@ -42,9 +49,16 @@ export default function Home() {
       <div className={styles.navhead}>
         All Posts
         <button className={styles.navbutton}>Create post</button>
+        <button onClick={(e)=>setSortState("dateDesc")}>sort date desc</button>
+        <button onClick={(e)=>setSortState("dateAsc")}>sort date asc</button>
+        <button onClick={(e)=>setSortState("alphaDesc")}>sort alpha desc</button>
+        <button onClick={(e)=>setSortState("alphaAsc")}>sort alpha asc</button>
+        <input 
+        value={searchState} 
+        onChange={(e) => setSearchState(e.target.value)}/>
       </div>
       <div className={styles.grid}>
-      {data.map((post: any, index: any) => (
+      {data.sort(sortMethods[sortState].method).filter((post: { content: string }) => post.content.toLowerCase().includes(searchState)).map((post: any, index: any) => (
         <h1 key={index}><Post
           id={post.id}
           title={post.title}
