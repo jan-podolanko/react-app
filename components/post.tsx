@@ -37,7 +37,7 @@ export default function Post({id, title, author, content, email, date}:
                     </div>
                 </Link>
                 <div className="post-details">
-                    Posted { date.toString() } by { author ? author : "an unknown author"}
+                    Posted { date.toString() } by { author ? author : "an unknown user"}
                 </div>
             </div>
             <ShowContent/>

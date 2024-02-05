@@ -39,18 +39,19 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <div>
-        Posts
+      <div className={styles.navhead}>
+        All Posts
+        <button className={styles.navbutton}>Create post</button>
       </div>
       <div className={styles.grid}>
       {data.map((post: any, index: any) => (
-        <div key={index}><Post
+        <h1 key={index}><Post
           id={post.id}
           title={post.title}
           author={post.author}
           content={post.content}
           email={post.email}
-          date={post.date} /></div>
+          date={post.date} /></h1>
         ))}
       </div>
     </main>

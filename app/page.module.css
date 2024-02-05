@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 1rem 6rem 6rem 6rem;
   min-height: 100vh;
 }
 
@@ -226,4 +226,19 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.navhead {
+  font-size: 5em;
+  font-weight: 700;
+}
+.navbutton {
+  background-color: #07164c;
+  padding: 6px;
+  border-radius: 7px;
+  margin-left: 15px;
+  padding: 10px;
+  position: absolute;
+  font-size: 15px;
+  font-weight: 700;
 }

@@ -2,31 +2,43 @@
   cursor: pointer;
 }
 
-.post-body {
+.subpost-body {
   margin: 10px;
   border: 2px solid white;
   border-radius: 10px;
   font-weight: 600;
 }
 
-.post-heading {
+.subpost-heading {
   position: relative;
   padding: 10px 10px 10px 10px;
   border-radius: 6px;
   background-color: #07164c;
 }
 
-.post-title {
+.subpost-title {
   font-size: 3em;
 }
 
-.post-details {
+.subpost-details {
   font-size: 1em;
+  font-weight: 200;
 }
 
-.post-content {
+.subpost-content {
   font-size: 1.5em;
   padding: 10px 0px 10px 10px;
+  font-weight: 300;
+}
+
+#comments-header {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 3px;
 }
 
 /*# sourceMappingURL=post.css.map */
