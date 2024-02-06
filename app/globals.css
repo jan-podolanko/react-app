@@ -108,3 +108,13 @@ a {
     color-scheme: dark;
   }
 }
+#home{
+    position: absolute;
+    margin: 10px;
+    font-size: 2em;
+    font-variation-settings: 'FILL' 1;
+    background-color: black;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 100%;
+}

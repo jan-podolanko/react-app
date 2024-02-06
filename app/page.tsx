@@ -33,7 +33,7 @@ export default function Home() {
     });
       setData(posts)
     };
-    const sortMethods = {
+    const sortMethods: any = {
       dateDesc: { method: (a: {date: number}, b: {date: number}) => {return (b.date - a.date)}},
       dateAsc: { method: (a: { date: number }, b: { date: number }) => { return (a.date - b.date) }},
       alphaDesc: {method: (a: { title: any }, b: { title: any }) => b.title.toLowerCase().localeCompare(a.title.toLowerCase())},

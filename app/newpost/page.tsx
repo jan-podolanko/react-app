@@ -4,12 +4,14 @@ import { db } from '@/firebase/firebase'
 import './styles.scss'
 import { Timestamp, addDoc, collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function CreatePost() {
   const [title, setTitle] = useState("Title");
   const [nickName, setNickName] = useState("Nickname");
   const [content, setContent] = useState("Post content");
   const [warning, setWarning] = useState(false);
+  const router = useRouter();
   function addPost(){
     if(title == "Title" || nickName == "Nickname" || content == "Post content" || title == "" || nickName == "" || content == ""){
       setWarning(true);
@@ -24,7 +26,7 @@ export default function CreatePost() {
       rating: 1,
       upvotedBy: [],
       downvotedBy: [],
-  })}};
+  }).then(()=>router.push('/'))}};
   function Warning(){
     if(warning){
       return <div>An error occured, try again!</div>
