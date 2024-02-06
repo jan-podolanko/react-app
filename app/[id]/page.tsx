@@ -6,10 +6,14 @@ import { db } from '@/firebase/firebase';
 import { getDoc, doc, collection, getDocs, where, query } from 'firebase/firestore';
 import '../globals.css'
 import Comment from '@/components/comment';
+import AddComment from '@/components/commentform';
 
 export default function Page({params: {id}}: {params: {id: string}}) {
-    const [data, setData] = useState({});
+    const [data, setData] = useState({title: "title", date: "date", content: "content", author: "author"});
     const [comms, setComms] = useState([]);
+    const [sortState, setSortState] = useState("dateDesc");
+    const [showCommentForm, setShowCommentForm] = useState(false);
+
     let post: any = {
             id: "",
             title: "Example post",
@@ -60,27 +64,48 @@ export default function Page({params: {id}}: {params: {id: string}}) {
             });
         });
         setComms(comments);
-        };
+    };
+    const sortMethods: any = {
+        dateDesc: { method: (a: {date: number}, b: {date: number}) => {return (b.date - a.date)}},
+        dateAsc: { method: (a: { date: number }, b: { date: number }) => { return (a.date - b.date) }},
+        alphaDesc: {method: (a: { content: string }, b: { content: string }) => b.content.toLowerCase().localeCompare(a.content.toLowerCase())},
+        alphaAsc: {method: (a: { content: string }, b: { content: string }) => a.content.toLowerCase().localeCompare(b.content.toLowerCase())}
+    };
     useEffect(() => {
       getPost();
       getComments();
     }, []);
-
+    function CommentForm(){
+        if(showCommentForm){
+            return <AddComment id={id} />
+        }
+    }
     return (
-        <><div className="subpost-body">
-            <div className="subpost-heading">
-                <div className="subpost-title">
-                    {data.title}
+        <>
+        <div className='subpost-container'>
+            <div className="subpost-body">
+                <div className="subpost-heading">
+                    <div className="subpost-title">
+                        {data.title}
+                    </div>
+                    <div className="subpost-details">
+                        Posted {data.date ? data.date.toString() : "on an unknown date"} by <div style={{display: "inline", fontWeight: "400"}}>{data.author ? data.author : "an unknown user"}</div>
+                    </div>
                 </div>
-                <div className="subpost-details">
-                    Posted {data.date ? data.date.toString() : "on an unknown date"} by {data.author ? data.author : "an unknown user"}
-                </div>
+                <div className="subpost-content"> {data.content} </div>
             </div>
-            <div className="subpost-content"> {data.content} </div>
-        </div>
-        <div id='comments-header'>Comments</div>
-        <div>
-                {comms.map((com: any, index: any) => (
+            <div id='comments-header'>Comments</div>
+            <div className='button-container'>
+                <div className="sort-button" style={{display: "inline"}}>sort by:</div>
+                <button className="sort-button" onClick={(e)=>setSortState("dateDesc")}>date, desc</button>
+                <button className="sort-button" onClick={(e)=>setSortState("dateAsc")}>date, asc</button>
+                <button className="sort-button" onClick={(e)=>setSortState("alphaDesc")}>z to a</button>
+                <button className="sort-button" onClick={(e)=>setSortState("alphaAsc")}>a to z</button>
+                <button className="sort-button" onClick={(e)=>setShowCommentForm(!showCommentForm)}>add comment</button>
+            </div>
+            <CommentForm />
+            <div>
+                {comms.sort(sortMethods[sortState].method).map((com: any, index: any) => (
                     <div key={index}>
                         <Comment
                         postId={com.postId}
@@ -95,6 +120,6 @@ export default function Page({params: {id}}: {params: {id: string}}) {
                         downvotedBy={com.downvotedBy} />
                     </div>
                 ))}
-            </div></>
-    );
-    }
+            </div>
+        </div></>
+    )};

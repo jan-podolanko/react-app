@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import styles from './page.module.css'
 import { db } from '@/firebase/firebase'
 import Post from '@/components/post'
@@ -47,25 +46,26 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.navhead}>
-        All Posts
-        <button className={styles.navbutton}>Create post</button>
-        <button onClick={(e)=>setSortState("dateDesc")}>sort date desc</button>
-        <button onClick={(e)=>setSortState("dateAsc")}>sort date asc</button>
-        <button onClick={(e)=>setSortState("alphaDesc")}>sort alpha desc</button>
-        <button onClick={(e)=>setSortState("alphaAsc")}>sort alpha asc</button>
+        <p style={{display: 'inline'}} className={styles.sortbutton}>sort by:</p>
+        <button className={styles.sortbutton} onClick={(e)=>setSortState("dateDesc")}>date, desc</button>
+        <button className={styles.sortbutton} onClick={(e)=>setSortState("dateAsc")}>date, asc</button>
+        <button className={styles.sortbutton} onClick={(e)=>setSortState("alphaDesc")}>z to a</button>
+        <button className={styles.sortbutton} onClick={(e)=>setSortState("alphaAsc")}>a to z</button>
         <input 
+        className={styles.sortbutton}
         value={searchState} 
         onChange={(e) => setSearchState(e.target.value)}/>
+        <Link href="/newpost" className={styles.sortbutton}>create post</Link>
       </div>
       <div className={styles.grid}>
       {data.sort(sortMethods[sortState].method).filter((post: { content: string }) => post.content.toLowerCase().includes(searchState)).map((post: any, index: any) => (
-        <h1 key={index}><Post
+        <div key={index}><Post
           id={post.id}
           title={post.title}
           author={post.author}
           content={post.content}
           email={post.email}
-          date={post.date} /></h1>
+          date={post.date} /></div>
         ))}
       </div>
     </main>

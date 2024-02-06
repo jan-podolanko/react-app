@@ -3,16 +3,27 @@
 .clickable:hover {
     cursor: pointer;
 }
+.subpost-container {
+    height: 100vh;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 70%, rgb(3, 1, 36) 100%);
+}
 .subpost-body {
-    margin: 10px;
-    border: 2px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;
     border-radius: 10px;
-    font-weight: 600;
+    font-weight: 400;
+    max-width: 800px;
 }
 .subpost-heading {
     position: relative;
-    padding: 10px 10px 10px 10px;
-    border-radius: 6px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 10px;
     background-color: $secondary;
 }
 .subpost-title {
@@ -25,7 +36,28 @@
 .subpost-content {
     font-size: 1.5em;
     padding: 10px 0px 10px 10px;
-    font-weight: 300;
+    font-weight: 200;
+}
+.sort-button {
+    background-color: #07164c;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 5px;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+.sort-button:hover {
+cursor: pointer;
+}
+.button-container {
+    max-width: 800px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 #comments-header {
     display: flex;

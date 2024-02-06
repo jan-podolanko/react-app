@@ -4,30 +4,43 @@
 }
 .post-body {
     margin: 10px;
-    border: 2px solid white;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;
     border-radius: 10px;
+    font-size: 2em;
 }
 .post-heading {
     position: relative;
     padding: 10px 10px 10px 10px;
-    border-radius: 6px;
+    border-radius: 10px;
     background-color: $secondary;
 }
 .post-title {
     font-size: 1em;
+    font-weight: 400;
 }
 .post-details {
     font-size: 0.5em;
+    font-weight: 200;
 }
 .post-content {
     font-size: 0.7em;
     padding: 10px 0px 10px 10px;
+    font-weight: 200;
 }
 
 .comment-body {
     margin: 10px;
-    border: 2px solid white;
-    border-radius: 10px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;    border-radius: 10px;
+    max-width: 800px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .comment-heading {

@@ -4,8 +4,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 6rem 6rem 6rem;
-  min-height: 100vh;
-}
+  background: radial-gradient(circle, rgba(0, 0, 0, 0) 70%, rgb(3, 1, 36) 100%);
+  }
 
 .description {
   display: inherit;
@@ -229,16 +229,32 @@
 }
 
 .navhead {
-  font-size: 5em;
+  font-size: 1em;
   font-weight: 700;
+  position: relative;
+  max-width: 100%;
 }
 .navbutton {
   background-color: #07164c;
-  padding: 6px;
   border-radius: 7px;
-  margin-left: 15px;
   padding: 10px;
   position: absolute;
+  right: 0;
   font-size: 15px;
   font-weight: 700;
+}
+.sortbutton {
+  background-color: #07164c;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 5px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+.sortbutton:hover {
+  cursor: pointer;
 }

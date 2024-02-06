@@ -1,0 +1,53 @@
+@import "../app/colors.scss";
+
+.clickable:hover {
+    cursor: pointer;
+}
+.form-body {
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem 2rem 1rem;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+.form-title {
+    margin: 10px;
+}
+.form-input-container {
+    border-radius: 6px;
+}
+.form-input {
+    font-size: 0.5em;
+    padding: 3px;
+    display: block;
+    margin: 10px;
+    background-color: $secondary;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-family: var(--font-mono);
+}
+.form-submit {
+    font-size: 0.5em;
+    font-family: var(--font-mono);
+    background-color: $secondary;
+    border-radius: 7px;
+    padding: 5px;
+    margin: 5px;
+    font-family: var(--font-mono);
+    font-weight: 400;
+}
+.form-submit:hover {
+    cursor: pointer;
+}

@@ -19,7 +19,7 @@ export default function Comment({postId, commentId, userId, userEmail, userName,
         <div className="comment-body">
             <div className="comment-heading">
                 <div className="comment-details">
-                    Posted { date.toString() } by { userName ? userName : "an unknown user"}
+                    Posted { date.toString() } by <div style={{display: "inline", fontWeight: "400"}}>{ userName ? userName : "an unknown user"}</div>
                 </div>
             </div>
             <div className="comment-content"> { content } </div>
